@@ -14,7 +14,8 @@ export default {
     children: 'Hey there, good looking',
     forceHideTitle: false,
     light: false,
-    ellipsis: false
+    ellipsis: false,
+    'data-hook': 'storybook-heading'
   },
 
   exampleProps: {

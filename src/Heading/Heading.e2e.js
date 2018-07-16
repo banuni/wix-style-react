@@ -11,6 +11,6 @@ describe('Heading', () => {
     const driver = headingTestkitFactory({dataHook});
 
     return waitForVisibilityOf(driver.element(), 'Cannot find Heading')
-      .then(() => expect(driver.getText()).toBe('Some text'));
+      .then(() => expect(driver.getText()).toBe('Hey there, good looking'));
   });
 });
