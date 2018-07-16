@@ -26,7 +26,7 @@ const StyledText = withStylable(
   defaultProps
 );
 
-export class Heading extends React.PureComponent {
+class Heading extends React.PureComponent {
   static displayName = 'Heading';
 
   static propTypes = {
@@ -49,3 +49,5 @@ export class Heading extends React.PureComponent {
     );
   }
 }
+
+export default Heading;
