@@ -3,12 +3,11 @@ import React from 'react';
 
 import {
   MessageBoxMarketerialLayout,
-  MessageBoxFunctionalLayout
+  MessageBoxFunctionalLayout,
 } from 'wix-style-react/MessageBox';
 import Button from 'wix-style-react/Button';
 
-
-const MarketerialLayoutExample = props =>
+const MarketerialLayoutExample = props => (
   <MessageBoxMarketerialLayout
     title="Looking Good!"
     content="You're doing great as ever"
@@ -19,10 +18,10 @@ const MarketerialLayoutExample = props =>
     onPrimaryButtonClick={props.log('You clicked "Got It"')}
     onSecondaryButtonClick={props.log('You clicked "Do something else"')}
     onClose={props.onClose}
-    />;
+  />
+);
 
-
-const FunctionalLayoutExample = props =>
+const FunctionalLayoutExample = props => (
   <MessageBoxFunctionalLayout
     title="Look at me please!"
     primaryButtonLabel="Got It"
@@ -32,25 +31,25 @@ const FunctionalLayoutExample = props =>
     onCancel={props.log('You clicked "Cancel"')}
     onOk={props.log('You clicked "Confirm"')}
     onClose={props.onClose}
-    >
+  >
     I am a confirmation dialog and have red or blue themes
-  </MessageBoxFunctionalLayout>;
-
+  </MessageBoxFunctionalLayout>
+);
 
 export default class ControlledMessageBoxes extends React.Component {
-  state = {layout: ''};
+  state = { layout: '' };
 
   layouts = {
-    MessageBoxMarketerialLayout: <MarketerialLayoutExample/>,
-    MessageBoxFunctionalLayout: <FunctionalLayoutExample/>
-  }
+    MessageBoxMarketerialLayout: <MarketerialLayoutExample />,
+    MessageBoxFunctionalLayout: <FunctionalLayoutExample />,
+  };
 
   buttonsStyles = {
     display: 'inline-flex',
     justifyContent: 'space-between',
     minWidth: '700px',
-    padding: '30px'
-  }
+    padding: '30px',
+  };
 
   render() {
     const activeLayout = this.layouts[this.state.layout];
@@ -58,23 +57,21 @@ export default class ControlledMessageBoxes extends React.Component {
     return (
       <div>
         <div style={this.buttonsStyles}>
-          { Object.keys(this.layouts).map(key =>
+          {Object.keys(this.layouts).map(key =>
             React.createElement(Button, {
               key,
-              onClick: () => this.setState({layout: key}),
-              children: `Preview <${key}/>`
-            })
-          )
-          }
+              onClick: () => this.setState({ layout: key }),
+              children: `Preview <${key}/>`,
+            }),
+          )}
         </div>
 
-        { activeLayout ?
-          React.cloneElement(activeLayout, {
+        {activeLayout
+          ? React.cloneElement(activeLayout, {
             log: text => () => console.log(text),
-            onClose: () => this.setState({layout: ''})
-          }) :
-          null
-        }
+            onClose: () => this.setState({ layout: '' }),
+          })
+          : null}
       </div>
     );
   }

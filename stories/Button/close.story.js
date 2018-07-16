@@ -14,13 +14,13 @@ export default {
 
   componentProps: {
     theme: 'close-standard',
-    children: <Icons.Close size="6px"/>
+    children: <Icons.Close size="6px" />,
   },
 
   exampleProps: {
     onClick: () => 'Clicked!',
     onMouseEnter: () => 'Mouse Enter!',
     onMouseLeave: () => 'Mouse Leave!',
-    children: icons
-  }
+    children: icons,
+  },
 };

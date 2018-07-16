@@ -1,5 +1,5 @@
 import React from 'react';
-import {TableContextPropTypes} from 'wix-style-react/Table';
+import { TableContextPropTypes } from 'wix-style-react/Table';
 import {
   TableToolbar,
   ItemGroup,
@@ -7,7 +7,7 @@ import {
   Title,
   Label,
   SelectedCount,
-  Divider
+  Divider,
 } from 'wix-style-react/Table/Toolbar';
 
 import Search from 'wix-style-react/Search';
@@ -16,22 +16,24 @@ import Button from 'wix-style-react/Button';
 import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
 
 export const renderMyTableToolbar = selectionContext => {
-  return selectionContext.selectedCount === 0 ?
-    <MainToolbar/> :
-    <BulkActionsToolbar {...selectionContext}/>;
+  return selectionContext.selectedCount === 0 ? (
+    <MainToolbar />
+  ) : (
+    <BulkActionsToolbar {...selectionContext} />
+  );
 };
 
 const MainToolbar = () => {
   const collectionOptions = [
-    {id: 0, value: 'All Products'},
-    {id: 1, value: 'Towels'},
-    {id: 2, value: 'Slippers'}
+    { id: 0, value: 'All Products' },
+    { id: 1, value: 'Towels' },
+    { id: 2, value: 'Slippers' },
   ];
 
   const filterOptions = [
-    {id: 0, value: 'All'},
-    {id: 1, value: 'Red'},
-    {id: 2, value: 'Cyan'}
+    { id: 0, value: 'All' },
+    { id: 1, value: 'Red' },
+    { id: 2, value: 'Cyan' },
   ];
 
   return (
@@ -43,23 +45,23 @@ const MainToolbar = () => {
         <Item>
           <Label>
             Collection
-            <span style={{width: '150px'}}>
-              <Dropdown options={collectionOptions} selectedId={0} roundInput/>
+            <span style={{ width: '150px' }}>
+              <Dropdown options={collectionOptions} selectedId={0} roundInput />
             </span>
           </Label>
         </Item>
         <Item>
           <Label>
             Filter By
-            <span style={{width: '86px'}}>
-              <Dropdown options={filterOptions} selectedId={0} roundInput/>
+            <span style={{ width: '86px' }}>
+              <Dropdown options={filterOptions} selectedId={0} roundInput />
             </span>
           </Label>
         </Item>
       </ItemGroup>
       <ItemGroup position="end">
         <Item>
-          <Search/>
+          <Search />
         </Item>
       </ItemGroup>
     </TableToolbar>
@@ -101,12 +103,11 @@ const BulkActionsToolbar = props => (
           Edit
         </Button>
       </Item>
-      <Divider/>
+      <Divider />
       <Item>
-        <Search expandable/>
+        <Search expandable />
       </Item>
     </ItemGroup>
   </TableToolbar>
 );
 BulkActionsToolbar.propTypes = TableContextPropTypes;
-

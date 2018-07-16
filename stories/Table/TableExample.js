@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, ToolbarContextPropTypes} from 'wix-style-react/Table';
+import { Table, ToolbarContextPropTypes } from 'wix-style-react/Table';
 import {
   TableToolbar,
   ItemGroup,
@@ -7,7 +7,7 @@ import {
   Label,
   Title,
   SelectedCount,
-  Divider
+  Divider,
 } from 'wix-style-react/Table/Toolbar';
 
 import Card from 'wix-style-react/Card';
@@ -17,14 +17,28 @@ import Button from 'wix-style-react/Button';
 import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
 
 const baseData = [
-  {name: 'Apple Towels', SKU: '111222', price: '$2.00', inventory: 'In stock'},
-  {name: 'Cyan Towels', SKU: '222333', price: '$2.00', inventory: 'In stock'},
-  {name: 'Marble Slippers', SKU: '333444', price: '$14.00', inventory: 'In stock'},
-  {name: 'Red Slippers', SKU: '444555', price: '$14.00', inventory: 'Out of stock'}
+  {
+    name: 'Apple Towels',
+    SKU: '111222',
+    price: '$2.00',
+    inventory: 'In stock',
+  },
+  { name: 'Cyan Towels', SKU: '222333', price: '$2.00', inventory: 'In stock' },
+  {
+    name: 'Marble Slippers',
+    SKU: '333444',
+    price: '$14.00',
+    inventory: 'In stock',
+  },
+  {
+    name: 'Red Slippers',
+    SKU: '444555',
+    price: '$14.00',
+    inventory: 'Out of stock',
+  },
 ];
 
 export class TableExample extends React.Component {
-
   render() {
     return (
       <Card>
@@ -33,21 +47,43 @@ export class TableExample extends React.Component {
           data={baseData}
           itemsPerPage={20}
           columns={[
-              {title: 'Name', render: row => <span>{row.name}</span>, width: '30%', minWidth: '150px'},
-              {title: 'SKU', render: row => <span>{row.SKU}</span>, width: '20%', minWidth: '100px'},
-              {title: 'Price', render: row => <span>{row.price}</span>, width: '20%', minWidth: '100px'},
-              {title: 'Inventory', render: row => <span>{row.inventory}</span>, width: '20%', minWidth: '100px'}
+            {
+              title: 'Name',
+              render: row => <span>{row.name}</span>,
+              width: '30%',
+              minWidth: '150px',
+            },
+            {
+              title: 'SKU',
+              render: row => <span>{row.SKU}</span>,
+              width: '20%',
+              minWidth: '100px',
+            },
+            {
+              title: 'Price',
+              render: row => <span>{row.price}</span>,
+              width: '20%',
+              minWidth: '100px',
+            },
+            {
+              title: 'Inventory',
+              render: row => <span>{row.inventory}</span>,
+              width: '20%',
+              minWidth: '100px',
+            },
           ]}
           showSelection
-          >
+        >
           <Table.ToolbarContainer>
-            { selectionContext =>
-               selectionContext.selectedCount === 0 ?
-                 <MainToolbar/> :
-                 <BulkActionsToolbar {...selectionContext}/>
+            {selectionContext =>
+              selectionContext.selectedCount === 0 ? (
+                <MainToolbar />
+              ) : (
+                <BulkActionsToolbar {...selectionContext} />
+              )
             }
           </Table.ToolbarContainer>
-          <Table.Content/>
+          <Table.Content />
         </Table>
       </Card>
     );
@@ -56,15 +92,15 @@ export class TableExample extends React.Component {
 
 const MainToolbar = () => {
   const collectionOptions = [
-    {id: 0, value: 'All Products'},
-    {id: 1, value: 'Towels'},
-    {id: 2, value: 'Slippers'}
+    { id: 0, value: 'All Products' },
+    { id: 1, value: 'Towels' },
+    { id: 2, value: 'Slippers' },
   ];
 
   const filterOptions = [
-    {id: 0, value: 'All'},
-    {id: 1, value: 'Red'},
-    {id: 2, value: 'Cyan'}
+    { id: 0, value: 'All' },
+    { id: 1, value: 'Red' },
+    { id: 2, value: 'Cyan' },
   ];
 
   return (
@@ -76,23 +112,23 @@ const MainToolbar = () => {
         <Item>
           <Label>
             Collection
-            <span style={{width: '150px'}}>
-              <Dropdown options={collectionOptions} selectedId={0} roundInput/>
+            <span style={{ width: '150px' }}>
+              <Dropdown options={collectionOptions} selectedId={0} roundInput />
             </span>
           </Label>
         </Item>
         <Item>
           <Label>
             Filter By
-            <span style={{width: '86px'}}>
-              <Dropdown options={filterOptions} selectedId={0} roundInput/>
+            <span style={{ width: '86px' }}>
+              <Dropdown options={filterOptions} selectedId={0} roundInput />
             </span>
           </Label>
         </Item>
       </ItemGroup>
       <ItemGroup position="end">
         <Item>
-          <Search/>
+          <Search />
         </Item>
       </ItemGroup>
     </TableToolbar>
@@ -134,9 +170,9 @@ const BulkActionsToolbar = props => (
           Edit
         </Button>
       </Item>
-      <Divider/>
+      <Divider />
       <Item>
-        <Search expandable/>
+        <Search expandable />
       </Item>
     </ItemGroup>
   </TableToolbar>

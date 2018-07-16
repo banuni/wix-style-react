@@ -1,11 +1,11 @@
 import React from 'react';
-import {SelectionContextPropTypes} from 'wix-style-react/Table';
+import { SelectionContextPropTypes } from 'wix-style-react/Table';
 import {
   TableToolbar,
   ItemGroup,
   Item,
   SelectedCount,
-  Divider
+  Divider,
 } from 'wix-style-react/Table/Toolbar';
 
 import Card from 'wix-style-react/Card';
@@ -17,7 +17,7 @@ export class BulkActionsExample extends React.Component {
   render() {
     return (
       <Card>
-        <BulkActionsToolbar selectedCount={12}/>
+        <BulkActionsToolbar selectedCount={12} />
       </Card>
     );
   }
@@ -58,12 +58,11 @@ const BulkActionsToolbar = props => (
           Edit
         </Button>
       </Item>
-      <Divider/>
+      <Divider />
       <Item>
-        <Search expandable/>
+        <Search expandable />
       </Item>
     </ItemGroup>
   </TableToolbar>
 );
 BulkActionsToolbar.propTypes = SelectionContextPropTypes;
-

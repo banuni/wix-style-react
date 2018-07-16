@@ -15,7 +15,7 @@ export default {
   componentProps: {
     theme: 'fullblue',
     children: 'Click Me',
-    dataHook: 'storybook-button'
+    dataHook: 'storybook-button',
   },
 
   exampleProps: {
@@ -23,6 +23,6 @@ export default {
     onMouseEnter: () => 'Mouse Enter!',
     onMouseLeave: () => 'Mouse Leave!',
     prefixIcon: icons,
-    suffixIcon: icons
-  }
+    suffixIcon: icons,
+  },
 };

@@ -26,17 +26,17 @@ import ExampleUsingURL from '../Breadcrumbs/ExampleUsingURL';
 const items = [
   {
     id: '1',
-    value: 'First item'
+    value: 'First item',
   },
   {
     id: '2',
     link: 'http://www.wix.com',
-    value: 'Linked item'
+    value: 'Linked item',
   },
   {
     id: '3',
-    value: 'Third item'
-  }
+    value: 'Third item',
+  },
 ];
 
 export default {
@@ -47,44 +47,47 @@ export default {
   componentProps: {
     activeId: '1',
     items,
-    size: 'medium'
+    size: 'medium',
   },
   exampleProps: {
     activeId: ['1', '2', '3'],
     items: [
-      {label: 'One item', value: [{id: 0, value: 'Homepage'}]},
-      {label: 'Three items', value: items}
-    ]
+      { label: 'One item', value: [{ id: 0, value: 'Homepage' }] },
+      { label: 'Three items', value: items },
+    ],
   },
   examples: (
     <div>
       <CodeExample title="Standard" code={ExampleStandardRow}>
-        <ExampleStandard/>
+        <ExampleStandard />
       </CodeExample>
 
       <CodeExample title="Sizes" code={ExampleSizesRow}>
-        <ExampleSizes/>
+        <ExampleSizes />
       </CodeExample>
 
       <CodeExample title="Example using path factory" code={ExampleUsingURLRaw}>
-        <ExampleUsingURL/>
+        <ExampleUsingURL />
       </CodeExample>
 
       <CodeExample title="Themes" code={ExampleThemesRow}>
-        <ExampleThemes/>
+        <ExampleThemes />
       </CodeExample>
 
       <CodeExample title="Html node items" code={ExampleWithNodesRow}>
-        <ExampleWithNodes/>
+        <ExampleWithNodes />
       </CodeExample>
 
       <CodeExample title="On click callback" code={ExampleWithOnClickRow}>
-        <ExampleWithOnClick/>
+        <ExampleWithOnClick />
       </CodeExample>
 
-      <CodeExample title="Chosen active element" code={ExampleWithChosenActiveElementRaw}>
-        <ExampleWithChosenActiveElement/>
+      <CodeExample
+        title="Chosen active element"
+        code={ExampleWithChosenActiveElementRaw}
+      >
+        <ExampleWithChosenActiveElement />
       </CodeExample>
     </div>
-  )
+  ),
 };

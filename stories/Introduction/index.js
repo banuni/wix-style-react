@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
 import Markdown from 'wix-storybook-utils/Markdown';
 
@@ -11,9 +11,13 @@ import TPA from '../../src/TPA/README.md';
 import UsageWithoutYoshiReadme from '../../docs/usage-without-yoshi.md';
 
 storiesOf('Introduction', module)
-  .add('Getting started', () => <Markdown source={Readme}/>)
-  .add('Testing', () => <Markdown source={TestsReadme}/>)
-  .add('Contribution', () => <Markdown source={Contribution}/>)
-  .add('TPA', () => <Markdown source={TPA}/>)
-  .add('Usage Without Yoshi', () => <Markdown source={UsageWithoutYoshiReadme}/>)
-  .add('Documenting components (AutoDocs)', () => <Markdown source={AddingStory}/>);
+  .add('Getting started', () => <Markdown source={Readme} />)
+  .add('Testing', () => <Markdown source={TestsReadme} />)
+  .add('Contribution', () => <Markdown source={Contribution} />)
+  .add('TPA', () => <Markdown source={TPA} />)
+  .add('Usage Without Yoshi', () => (
+    <Markdown source={UsageWithoutYoshiReadme} />
+  ))
+  .add('Documenting components (AutoDocs)', () => (
+    <Markdown source={AddingStory} />
+  ));
