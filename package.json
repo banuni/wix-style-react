@@ -189,14 +189,6 @@
         "error",
         "fdescribe",
         "fit"
-      ],
-      "indent": 0,
-      "indent-legacy": [
-        2,
-        2,
-        {
-          "SwitchCase": 1
-        }
       ]
     }
   }

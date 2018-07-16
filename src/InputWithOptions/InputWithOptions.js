@@ -98,7 +98,7 @@ class InputWithOptions extends WixComponent {
     return !this.props.highlight
       ? options
       : options.map(option => {
-        return {
+          return {
             ...option,
             value: (
               <Highlighter
@@ -109,7 +109,7 @@ class InputWithOptions extends WixComponent {
               </Highlighter>
             ),
           };
-      });
+        });
   }
 
   _renderDropdownLayout() {

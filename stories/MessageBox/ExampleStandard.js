@@ -68,9 +68,9 @@ export default class ControlledMessageBoxes extends React.Component {
 
         {activeLayout
           ? React.cloneElement(activeLayout, {
-            log: text => () => console.log(text),
-            onClose: () => this.setState({ layout: '' }),
-          })
+              log: text => () => console.log(text),
+              onClose: () => this.setState({ layout: '' }),
+            })
           : null}
       </div>
     );

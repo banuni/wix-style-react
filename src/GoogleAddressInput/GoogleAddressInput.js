@@ -60,12 +60,12 @@ class GoogleAddressInput extends React.Component {
 
       ...(this.props.footer
         ? [
-          {
-            id: suggestions.length,
-            value: this.props.footer,
-            ...this.props.footerOptions,
-          },
-        ]
+            {
+              id: suggestions.length,
+              value: this.props.footer,
+              ...this.props.footerOptions,
+            },
+          ]
         : []),
     ];
 
