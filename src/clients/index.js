@@ -1,4 +1,4 @@
-import GoogleMapsClient from './GoogleMapsClient.js';
+import GoogleMapsClient from './GoogleMapsClient';
 
 export default {
   GoogleMapsClient,

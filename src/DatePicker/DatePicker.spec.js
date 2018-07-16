@@ -10,7 +10,7 @@ import { datePickerTestkitFactory as enzymeDatePickerTestkitFactory } from '../.
 import datePickerDriverFactory from './DatePicker.driver';
 import Input from '../Input';
 import DatePicker from './DatePicker';
-import '../utils/RangePolyfill.js';
+import '../utils/RangePolyfill';
 
 import isLocale from 'date-fns/locale/is';
 

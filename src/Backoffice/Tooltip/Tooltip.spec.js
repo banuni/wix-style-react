@@ -11,7 +11,7 @@ import { backofficeTooltipTestkitFactory as enzymeTooltipTestkitFactory } from '
 import { mount } from 'enzyme';
 import Button from '../Button';
 import waitForCond from 'wait-for-cond';
-import '../../utils/RangePolyfill.js';
+import '../../utils/RangePolyfill';
 
 describe('Tooltip', () => {
   const createDriver = createDriverFactory(tooltipDriverFactory);

@@ -1,5 +1,5 @@
 import React from 'react';
-import buttonDriverFactory from '../Backoffice/Button/Button.driver.js';
+import buttonDriverFactory from '../Backoffice/Button/Button.driver';
 import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.driver';
 import ReactDOM from 'react-dom';
 

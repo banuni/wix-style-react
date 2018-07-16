@@ -1,4 +1,4 @@
-import BaseTextLink from './TextLink/TextLink.js';
-import TextLinkLayout from './TextLinkLayout/TextLinkLayout.js';
+import BaseTextLink from './TextLink/TextLink';
+import TextLinkLayout from './TextLinkLayout/TextLinkLayout';
 
 export { TextLinkLayout, BaseTextLink };

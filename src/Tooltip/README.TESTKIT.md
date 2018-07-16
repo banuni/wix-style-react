@@ -8,8 +8,8 @@
 
 Tooltip driver might need polyfills, two polyfills are supported via the library
 ```javascript
-import 'wix-style-react/dist/src/Tooltip/RangePolyfill.js';
-import 'wix-style-react/dist/src/Tooltip/CancelAnimationPolyfill.js';
+import 'wix-style-react/dist/src/Tooltip/RangePolyfill';
+import 'wix-style-react/dist/src/Tooltip/CancelAnimationPolyfill';
 ```
 
 ### Enzyme / ReactTestUtils

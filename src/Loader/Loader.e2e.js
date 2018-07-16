@@ -4,7 +4,7 @@ import {
   loaderTestkitFactory,
   waitForVisibilityOf,
 } from '../../testkit/protractor';
-import { disableCSSAnimation } from '../../test/utils/protractor.js';
+import { disableCSSAnimation } from '../../test/utils/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 import { ExpectedConditions as EC } from 'protractor';
 
