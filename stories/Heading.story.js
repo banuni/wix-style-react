@@ -15,7 +15,7 @@ export default {
     forceHideTitle: false,
     light: false,
     ellipsis: false,
-    'data-hook': 'storybook-heading'
+    dataHook: 'storybook-heading'
   },
 
   exampleProps: {

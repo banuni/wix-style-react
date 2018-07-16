@@ -1,9 +1,9 @@
-import * as eyes from 'eyes.it';
+import eyes from 'eyes.it';
 import {getStoryUrl, waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
 import {headingTestkitFactory} from '../../testkit/protractor';
 
 describe('Heading', () => {
-  const storyUrl = getStoryUrl('Components', 'Heading');
+  const storyUrl = getStoryUrl('1. Foundation', '1.3 Heading');
 
   beforeEach(() => browser.get(storyUrl));
   eyes.it('should display correct content', () => {
