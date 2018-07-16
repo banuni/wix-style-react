@@ -11,7 +11,7 @@ import {
 import Card from 'wix-style-react/Card';
 import Search from 'wix-style-react/Search';
 import Button from 'wix-style-react/Button';
-import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
+import { Edit, Duplicate, Upload } from 'wix-style-react/new-icons';
 
 export class BulkActionsExample extends React.Component {
   render() {
@@ -34,27 +34,36 @@ const BulkActionsToolbar = props => (
       <Item layout="button">
         <Button
           withNewIcons
-          theme="whiteblueprimary" prefixIcon={<Upload/>}
-          onClick={() => window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)}
-          >
+          theme="whiteblueprimary"
+          prefixIcon={<Upload />}
+          onClick={() =>
+            window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)
+          }
+        >
           Export
         </Button>
       </Item>
       <Item layout="button">
         <Button
           withNewIcons
-          theme="whiteblueprimary" prefixIcon={<Duplicate/>}
-          onClick={() => window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)}
-          >
+          theme="whiteblueprimary"
+          prefixIcon={<Duplicate />}
+          onClick={() =>
+            window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)
+          }
+        >
           Duplicate
         </Button>
       </Item>
       <Item layout="button">
         <Button
           withNewIcons
-          theme="whiteblueprimary" prefixIcon={<Edit/>}
-          onClick={() => window.alert(`Editing selectedIds=${props.getSelectedIds()}`)}
-          >
+          theme="whiteblueprimary"
+          prefixIcon={<Edit />}
+          onClick={() =>
+            window.alert(`Editing selectedIds=${props.getSelectedIds()}`)
+          }
+        >
           Edit
         </Button>
       </Item>

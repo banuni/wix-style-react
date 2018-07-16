@@ -15,7 +15,7 @@ import Checkbox from 'wix-style-react/Checkbox';
 import Card from 'wix-style-react/Card';
 import Page from 'wix-style-react/Page';
 import Button from 'wix-style-react/Button';
-import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
+import { Edit, Duplicate, Upload } from 'wix-style-react/new-icons';
 import Highlighter from '../../src/Highlighter/Highlighter';
 
 const createDataSet = setIndex => [
@@ -145,34 +145,43 @@ export class TablePageExample extends React.Component {
           <Item layout="button">
             <Button
               withNewIcons
-              theme="whiteblueprimary" prefixIcon={<Upload/>}
-              onClick={() => window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)}
-              >
-            Export
-          </Button>
+              theme="whiteblueprimary"
+              prefixIcon={<Upload />}
+              onClick={() =>
+                window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)
+              }
+            >
+              Export
+            </Button>
           </Item>
           <Item layout="button">
             <Button
               withNewIcons
-              theme="whiteblueprimary" prefixIcon={<Duplicate/>}
-              onClick={() => window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)}
-              >
-            Duplicate
-          </Button>
+              theme="whiteblueprimary"
+              prefixIcon={<Duplicate />}
+              onClick={() =>
+                window.alert(
+                  `Duplicating selectedIds=${props.getSelectedIds()}`,
+                )
+              }
+            >
+              Duplicate
+            </Button>
           </Item>
           <Item layout="button">
             <Button
               withNewIcons
-              theme="whiteblueprimary" prefixIcon={<Edit/>}
-              onClick={() => window.alert(`Editing selectedIds=${props.getSelectedIds()}`)}
-              >
-            Edit
-          </Button>
+              theme="whiteblueprimary"
+              prefixIcon={<Edit />}
+              onClick={() =>
+                window.alert(`Editing selectedIds=${props.getSelectedIds()}`)
+              }
+            >
+              Edit
+            </Button>
           </Item>
-          <Divider/>
-          <Item>
-            {this.renderSearch(true)}
-          </Item>
+          <Divider />
+          <Item>{this.renderSearch(true)}</Item>
           <Divider />
           <Item>{this.renderSearch(true)}</Item>
         </ItemGroup>

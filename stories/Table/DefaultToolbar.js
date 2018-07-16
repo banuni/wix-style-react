@@ -13,7 +13,7 @@ import {
 import Search from 'wix-style-react/Search';
 import Dropdown from 'wix-style-react/Dropdown';
 import Button from 'wix-style-react/Button';
-import {Edit, Duplicate, Upload} from 'wix-style-react/new-icons';
+import { Edit, Duplicate, Upload } from 'wix-style-react/new-icons';
 
 export const renderMyTableToolbar = selectionContext => {
   return selectionContext.selectedCount === 0 ? (
@@ -79,27 +79,36 @@ const BulkActionsToolbar = props => (
       <Item layout="button">
         <Button
           withNewIcons
-          theme="whiteblueprimary" prefixIcon={<Upload/>}
-          onClick={() => window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)}
-          >
+          theme="whiteblueprimary"
+          prefixIcon={<Upload />}
+          onClick={() =>
+            window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)
+          }
+        >
           Export
         </Button>
       </Item>
       <Item layout="button">
         <Button
           withNewIcons
-          theme="whiteblueprimary" prefixIcon={<Duplicate/>}
-          onClick={() => window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)}
-          >
+          theme="whiteblueprimary"
+          prefixIcon={<Duplicate />}
+          onClick={() =>
+            window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)
+          }
+        >
           Duplicate
         </Button>
       </Item>
       <Item layout="button">
         <Button
           withNewIcons
-          theme="whiteblueprimary" prefixIcon={<Edit/>}
-          onClick={() => window.alert(`Editing selectedIds=${props.getSelectedIds()}`)}
-          >
+          theme="whiteblueprimary"
+          prefixIcon={<Edit />}
+          onClick={() =>
+            window.alert(`Editing selectedIds=${props.getSelectedIds()}`)
+          }
+        >
           Edit
         </Button>
       </Item>

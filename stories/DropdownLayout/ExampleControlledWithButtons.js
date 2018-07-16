@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DropdownLayout from 'wix-style-react/DropdownLayout';
 import ChevronDown from 'wix-style-react/new-icons/ChevronDown';
-import {Button} from 'wix-style-react/Backoffice';
+import { Button } from 'wix-style-react/Backoffice';
 import styles from './ExampleControlledWithButtons.scss';
 
 const longOptions = [
@@ -57,10 +57,10 @@ class ControlledExample extends Component {
             <Button
               withNewIcons
               height="medium"
-              suffixIcon={<ChevronDown/>}
+              suffixIcon={<ChevronDown />}
               onClick={onClick(1)}
               theme="fullblue"
-              >
+            >
               Click On Me
             </Button>
           </div>
@@ -68,10 +68,10 @@ class ControlledExample extends Component {
             <Button
               withNewIcons
               height="medium"
-              suffixIcon={<ChevronDown/>}
+              suffixIcon={<ChevronDown />}
               onClick={onClick(2)}
               theme="fullblue"
-              >
+            >
               Click On Me Too
             </Button>
           </div>
@@ -79,10 +79,10 @@ class ControlledExample extends Component {
             <Button
               withNewIcons
               height="medium"
-              suffixIcon={<ChevronDown/>}
+              suffixIcon={<ChevronDown />}
               onClick={onClick(3)}
               theme="fullblue"
-              >
+            >
               Click On Me Now
             </Button>
           </div>

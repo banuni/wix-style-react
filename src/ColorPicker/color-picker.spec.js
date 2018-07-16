@@ -81,7 +81,13 @@ describe('ColorPicker', () => {
       const onCancel = jest.fn();
       const onConfirm = jest.fn();
       const value = '#00FF00';
-      createComponent({value, onChange, onCancel, onConfirm, showHistory: true});
+      createComponent({
+        value,
+        onChange,
+        onCancel,
+        onConfirm,
+        showHistory: true,
+      });
       driver.selectBlackColor();
       expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
       expect(color(driver.historyPreviousColor()).hex()).toBe(value);
