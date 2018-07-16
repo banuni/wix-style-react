@@ -4,4 +4,4 @@ export {
   GLOBAL_NOTIFICATION,
   STICKY_NOTIFICATION,
   DEFAULT_TIMEOUT,
-} from './Notification.js';
+} from './Notification';

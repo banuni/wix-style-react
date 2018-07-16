@@ -292,7 +292,8 @@ describe('InputArea', () => {
     });
 
     it('should allow adding aria-describedby', () => {
-      const driver = createDriver(<InputAreaForTesting ariaDescribedby="blabla" />,
+      const driver = createDriver(
+        <InputAreaForTesting ariaDescribedby="blabla" />,
       );
       expect(driver.getAriaDescribedby()).toBe('blabla');
     });
