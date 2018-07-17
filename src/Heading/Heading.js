@@ -38,8 +38,8 @@ class Heading extends React.PureComponent {
 
     return (
       <CoreText
-        {...this.props}
         {...style('root', {light, appearance}, rest)}
+        {...rest}
         tagName={this.state.tagName}
         />
     );
