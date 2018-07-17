@@ -4,10 +4,7 @@
   "version": "4.9.0",
   "main": "./dist/src/index.js",
   "module": "./dist/es/src/index.js",
-  "sideEffects": [
-    "./.storybook/**/*.*",
-    "./stories/**/*.*"
-  ],
+  "sideEffects": false,
   "files": [
     "dist",
     "src",
