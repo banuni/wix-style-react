@@ -41,6 +41,7 @@
 // Override <Input>'s default focus style
 .tagsContainer div {
   border-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .tagsContainer:not(.empty) div:hover {
