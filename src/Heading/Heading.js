@@ -13,37 +13,29 @@ export const APPEARANCES = {
   H6: 'H6'
 };
 
-class Heading extends React.PureComponent {
-  static displayName = 'Heading';
+const Heading = ({light, appearance, ...rest}) => (
+  <CoreText
+    {...style('root', {light, appearance}, rest)}
+    {...rest}
+    tagName={appearance.toLowerCase()}
+    />
+);
 
-  static propTypes = {
-    ...omit(CoreText.propTypes, ['tagName']),
+Heading.displayName = 'Heading';
 
-    /** is the text has dark or light skin */
-    light: bool,
+Heading.propTypes = {
+  ...omit(CoreText.propTypes, ['tagName']),
 
-    /** typography of the heading */
-    appearance: oneOf(Object.keys(APPEARANCES))
-  };
+  /** is the text has dark or light skin */
+  light: bool,
 
-  static defaultProps = {
-    appearance: APPEARANCES.H1,
-    light: false
-  };
+  /** typography of the heading */
+  appearance: oneOf(Object.keys(APPEARANCES))
+};
 
-  state = {tagName: this.props.appearance.toLowerCase()}
-
-  render() {
-    const {light, appearance, ...rest} = this.props;
-
-    return (
-      <CoreText
-        {...style('root', {light, appearance}, rest)}
-        {...rest}
-        tagName={this.state.tagName}
-        />
-    );
-  }
-}
+Heading.defaultProps = {
+  appearance: APPEARANCES.H1,
+  light: false
+};
 
 export default Heading;
