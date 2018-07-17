@@ -3,7 +3,7 @@ import {getStoryUrl, waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
 import {headingTestkitFactory} from '../../testkit/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
-fdescribe('Heading', () => {
+describe('Heading', () => {
   let driver;
   const storyUrl = getStoryUrl('1. Foundation', '1.3 Heading');
   const dataHook = 'storybook-heading';
