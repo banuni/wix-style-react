@@ -11,8 +11,8 @@
   "files": [
     "dist",
     "src",
-    "es",
     "scripts",
+    "es",
     ".babelrc",
     "testkit",
     "new-icons",
