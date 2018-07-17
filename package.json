@@ -4,10 +4,14 @@
   "version": "4.9.0",
   "main": "dist/src/index.js",
   "module": "dist/es/src/index.js",
-  "sideEffects": false,
+  "sideEffects": [
+    "./.storybook/**/*.*",
+    "./stories/**/*.*"
+  ],
   "files": [
     "dist",
     "src",
+    "es",
     "scripts",
     ".babelrc",
     "testkit",
@@ -153,7 +157,9 @@
   },
   "babel": {
     "presets": [
-      "wix"
+      "es2015",
+      "react",
+      "stage-2"
     ]
   },
   "eslintConfig": {
