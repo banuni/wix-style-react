@@ -50,7 +50,7 @@ class InputWithTags extends React.Component {
   render() {
     const {tags, onRemoveTag, placeholder, error, disabled, delimiters, mode, ...inputProps} = this.props;
     const {inputHasFocus: hasFocus, hasHover} = this.state;
-    const isSelectMode = mode === 'select'
+    const isSelectMode = mode === 'select';
 
     const className = classNames({
       [styles.tagsContainer]: true,
@@ -158,7 +158,7 @@ InputWithTags.propTypes = {
   autoFocus: PropTypes.bool,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
-  mode: PropTypes.string,
+  mode: PropTypes.oneOf(['select']),
   delimiters: PropTypes.array,
   width: PropTypes.string
 };

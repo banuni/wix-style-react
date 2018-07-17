@@ -53,8 +53,6 @@ class MultiSelect extends InputWithOptions {
   }
 
   inputAdditionalProps() {
-    const isSelectMode = this.props.mode === 'select';
-
     return {
       inputElement: (
         <InputWithTags
