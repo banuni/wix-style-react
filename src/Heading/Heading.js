@@ -3,7 +3,6 @@ import {oneOf, bool} from 'prop-types';
 import {Text as CoreText} from 'wix-ui-backoffice/dist/src/components/core/CoreText';
 import omit from 'lodash/omit';
 import style from './Heading.st.css';
-import {withStylable} from 'wix-ui-core/withStylable';
 
 export const APPEARANCES = {
   H1: 'H1',
@@ -13,18 +12,6 @@ export const APPEARANCES = {
   H5: 'H5',
   H6: 'H6'
 };
-
-const defaultProps = {
-  appearance: APPEARANCES.H1,
-  light: false
-};
-
-const StyledText = withStylable(
-  CoreText,
-  style,
-  ({light, appearance}) => ({light, appearance}),
-  defaultProps
-);
 
 class Heading extends React.PureComponent {
   static displayName = 'Heading';
@@ -39,13 +26,22 @@ class Heading extends React.PureComponent {
     appearance: oneOf(Object.keys(APPEARANCES))
   };
 
-  static defaultProps = defaultProps;
+  static defaultProps = {
+    appearance: APPEARANCES.H1,
+    light: false
+  };
 
   state = {tagName: this.props.appearance.toLowerCase()}
 
   render() {
+    const {light, appearance, ...rest} = this.props;
+
     return (
-      <StyledText {...this.props} tagName={this.state.tagName}/>
+      <CoreText
+        {...this.props}
+        {...style('root', {light, appearance}, rest)}
+        tagName={this.state.tagName}
+        />
     );
   }
 }
