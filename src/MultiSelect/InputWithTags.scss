@@ -2,7 +2,15 @@
 
 .input {
   min-width: 30px;
-  margin: -1px;
+}
+
+// Override <Input>'s default focus style
+.input div {
+  border-color: transparent !important;
+}
+
+.input div:hover {
+  background-color: transparent !important;
 }
 
 .emptyInput {
@@ -31,16 +39,7 @@
 }
 
 .hasMaxHeight {
-  overflow-y: scroll;
-}
-
-// Override <Input>'s default focus style
-.tagsContainer div {
-  border-color: transparent !important;
-}
-
-.tagsContainer div:hover {
-  background-color: transparent;
+  overflow-y: auto;
 }
 
 .error {
