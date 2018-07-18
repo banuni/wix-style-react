@@ -16,6 +16,7 @@ export default {
     withNewIcons: true,
     theme: 'fullblue',
     children: 'Click Me',
+    loading: false,
     dataHook: 'storybook-button'
   },
 

@@ -6,6 +6,7 @@ import ButtonLayout from '../../ButtonLayout/ButtonLayout';
 import omit from 'omit';
 import {withFocusable, focusableStates} from '../../common/Focusable';
 import {pickAccessibilityProps} from '../../common/accessibility';
+import Loader from './../../Loader';
 
 const ICON_SIZES = {
   'x-small': '8px',
@@ -27,6 +28,7 @@ class Button extends WixComponent {
     ...ButtonLayout.propTypes,
     children: node,
     id: string,
+    loading: bool,
     prefixIcon: node,
     suffixIcon: node,
     type: string,
@@ -62,11 +64,22 @@ class Button extends WixComponent {
   addSuffix = () =>
     this.addIcon(styles.suffix, this.props.suffixIcon, this.props.height);
 
+  renderButtonContent() {
+    if (this.props.loading) {
+      return <Loader size="tiny"/>;
+    }
+
+    return [
+      this.addPrefix(),
+      this.props.children,
+      this.addSuffix()
+    ];
+  }
+
   render() {
     const {
       disabled,
       onClick,
-      children,
       type,
       onMouseEnter,
       onMouseLeave
@@ -87,9 +100,7 @@ class Button extends WixComponent {
           {...focusableStates(this.props)}
           {...pickAccessibilityProps(this.props)}
           >
-          {this.addPrefix()}
-          {children}
-          {this.addSuffix()}
+          {this.renderButtonContent()}
         </button>
       </ButtonLayout>
     );
