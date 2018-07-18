@@ -84,6 +84,11 @@ describe('Button', () => {
     expect(driver.isPrefixIconExists()).toBeFalsy();
     expect(driver.isSuffixIconExists()).toBeTruthy();
   });
+
+  it('should show loader when loading', () => {
+    const driver = createDriver(<Button loading/>);
+    expect(driver.loading()).toBeTruthy();
+  });
 });
 
 describe('testkit', () => {

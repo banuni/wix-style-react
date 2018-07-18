@@ -43,7 +43,7 @@ class Button extends WixComponent {
     withNewIcons: false
   };
 
-  addIcon = (className, icon, height) => {
+  addIcon = (className, icon, height, key) => {
     const iconSizes = this.props.withNewIcons ? NEW_ICON_SIZES : ICON_SIZES;
     const fallbackSize = this.props.withNewIcons ? iconSizes.medium : '16px';
     const iconSize = iconSizes[height] || fallbackSize;
@@ -51,7 +51,7 @@ class Button extends WixComponent {
 
     return (
       icon ?
-        <div className={className} data-hook={dataHook}>
+        <div className={className} key={key} data-hook={dataHook}>
           {React.cloneElement(icon, {size: iconSize})}
         </div> :
         null
@@ -59,10 +59,10 @@ class Button extends WixComponent {
   }
 
   addPrefix = () =>
-    this.addIcon(styles.prefix, this.props.prefixIcon, this.props.height);
+    this.addIcon(styles.prefix, this.props.prefixIcon, this.props.height, 'prefix');
 
   addSuffix = () =>
-    this.addIcon(styles.suffix, this.props.suffixIcon, this.props.height);
+    this.addIcon(styles.suffix, this.props.suffixIcon, this.props.height, 'suffix');
 
   renderButtonContent() {
     if (this.props.loading) {

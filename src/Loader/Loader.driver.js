@@ -7,7 +7,6 @@ const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
 const loaderDriverFactory = ({element}) => {
   const textDriver = element && textTestkitFactory({wrapper: element, dataHook: 'loader-text'});
-
   return {
     component: () => element,
     exists: () => !!element,
