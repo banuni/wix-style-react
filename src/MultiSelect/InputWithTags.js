@@ -141,7 +141,7 @@ class InputWithTags extends React.Component {
               error={error}
               errorMessage={errorMessage}
               menuArrow={isSelectMode}
-            />
+              />
           </div>
         )}
       </div>
