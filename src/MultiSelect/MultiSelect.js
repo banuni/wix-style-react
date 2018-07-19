@@ -202,7 +202,9 @@ MultiSelect.propTypes = {
   maxHeight: PropTypes.string,
   maxNumRows: PropTypes.number,
   delimiters: PropTypes.array,
-  mode: PropTypes.string
+  mode: PropTypes.string,
+  error: PropTypes.bool,
+  errorMessage: PropTypes.string
 };
 
 MultiSelect.defaultProps = {

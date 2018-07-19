@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tag from '../Tag/Tag';
 import Input from '../Input';
+import InputSuffix from '../Input/InputSuffix';
 import styles from './InputWithTags.scss';
 import omit from 'omit';
 import classNames from 'classnames';
@@ -48,7 +49,18 @@ class InputWithTags extends React.Component {
   }
 
   render() {
-    const {tags, onRemoveTag, placeholder, error, disabled, delimiters, mode, ...inputProps} = this.props;
+    const {
+      tags,
+      onRemoveTag,
+      placeholder,
+      error,
+      errorMessage,
+      disabled,
+      delimiters,
+      mode,
+      ...inputProps
+    } = this.props;
+
     const {inputHasFocus: hasFocus, hasHover} = this.state;
     const isSelectMode = mode === 'select';
 
@@ -75,6 +87,7 @@ class InputWithTags extends React.Component {
       'onFocus',
       'onBlur',
       'menuArrow',
+      'errorMessage',
       'onInputClicked'], inputProps);
     const fontSize = (desiredProps.size && desiredProps.size === 'small') ? '14px' : '16px';
 
@@ -110,8 +123,6 @@ class InputWithTags extends React.Component {
             {...desiredProps}
             dataHook="inputWithTags-input"
             disabled={disabled}
-            error={error}
-            menuArrow={isSelectMode}
             readOnly={isSelectMode}
             onChange={e => {
               if (!delimiters.includes(e.target.value)) {
@@ -121,6 +132,18 @@ class InputWithTags extends React.Component {
             }}
             />
         </span>
+
+
+        {(isSelectMode || error) && (
+          <div className={styles.inputSuffix}>
+            <InputSuffix
+              disabled={disabled}
+              error={error}
+              errorMessage={errorMessage}
+              menuArrow={isSelectMode}
+            />
+          </div>
+        )}
       </div>
     );
   }
@@ -158,6 +181,7 @@ InputWithTags.propTypes = {
   autoFocus: PropTypes.bool,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
+  errorMessage: PropTypes.string,
   mode: PropTypes.oneOf(['select']),
   delimiters: PropTypes.array,
   width: PropTypes.string

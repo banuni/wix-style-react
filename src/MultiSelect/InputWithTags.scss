@@ -13,6 +13,18 @@
   cursor: pointer;
 }
 
+.readOnly {
+  position: relative;
+  padding-right: 55px;
+}
+
+.inputSuffix {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+}
+
 .hiddenDiv {
   @include FontRoman();
   visibility: hidden;
@@ -32,6 +44,7 @@
   color: $D30;
   font-size: 16px;
   overflow-y: hidden;
+  box-sizing: border-box;
 }
 
 .hasMaxHeight {
@@ -50,6 +63,8 @@
 
 .error {
   border-color: $paletteR1;
+  position: relative;
+  padding-right: 55px;
 }
 
 .disabled {
