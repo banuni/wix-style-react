@@ -38,10 +38,10 @@ class MessageBoxFunctionalLayout extends WixComponent {
     const scrolledToBottom =
       this.messageBoxRef.scrollTop + this.messageBoxRef.clientHeight === this.messageBoxRef.scrollHeight;
 
-      if (scrolledToBottom !== this.state.scrolledToBottom) {
-        this.setState({scrolledToBottom});
-      }
-    }, 16);
+    if (scrolledToBottom !== this.state.scrolledToBottom) {
+      this.setState({scrolledToBottom});
+    }
+  }, 16);
 
   render() {
     const {

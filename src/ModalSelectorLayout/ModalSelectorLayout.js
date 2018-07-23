@@ -335,10 +335,7 @@ export default class ModalSelectorLayout extends WixComponent {
     items.filter(({disabled}) => !disabled);
 
   _renderFooter = () => {
-    const {
-      isLoaded,
-      selectedItems
-    } = this.state;
+    const {selectedItems} = this.state;
 
     const {
       onCancel,
