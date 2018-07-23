@@ -1,3 +1,5 @@
+import '../src/assets/helvetica.scss';
+
 import {configure, storiesOf} from '@storybook/react';
 import {setOptions} from '@storybook/addon-options';
 
