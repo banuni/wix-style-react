@@ -352,7 +352,6 @@ export default class ModalSelectorLayout extends WixComponent {
 
     return (
       <FooterLayout
-        withTopPadding={isLoaded}
         onCancel={onCancel}
         onOk={() => onOk(multiple ? enabledItems : enabledItems[0])}
         cancelText={cancelButtonText}
