@@ -19,7 +19,7 @@ import setMonth from 'date-fns/set_month';
 import setDate from 'date-fns/set_date';
 
 import WixComponent from '../BaseComponents/WixComponent';
-import CalendarIcon from '../Icons/dist/components/Calendar';
+import CalendarIcon from '../new-icons/Date';
 import localeUtilsFactory, {formatDate} from './LocaleUtils';
 
 import styles from './DatePicker.scss';
@@ -46,29 +46,37 @@ export default class DatePicker extends WixComponent {
   static displayName = 'DatePicker';
 
   static propTypes = {
-    /** Can provide Input with your custom props */
+    /** Can provide Input with your custom props. If you don't need a custom input element, and only want to pass props to the Input, then use inputProps prop. I think this is not in use outside of WSR, and can be deprecated. */
     customInput: PropTypes.node,
+
+    /** Properties appended to the default Input component or the custom Input component. */
+    inputProps: PropTypes.object,
 
     /** Custom date format */
     dateFormat: PropTypes.string,
 
     /** DatePicker instance locale */
-    locale: PropTypes.oneOf([
-      'en',
-      'es',
-      'pt',
-      'fr',
-      'de',
-      'pl',
-      'it',
-      'ru',
-      'ja',
-      'ko',
-      'tr',
-      'sv',
-      'no',
-      'nl',
-      'da'
+    locale: PropTypes.oneOfType([
+      PropTypes.oneOf([
+        'en',
+        'es',
+        'pt',
+        'fr',
+        'de',
+        'pl',
+        'it',
+        'ru',
+        'ja',
+        'ko',
+        'tr',
+        'sv',
+        'no',
+        'nl',
+        'da']),
+      PropTypes.shape({
+        distanceInWords: PropTypes.object,
+        format: PropTypes.object
+      })
     ]),
 
     /** Is the DatePicker disabled */
@@ -247,8 +255,8 @@ export default class DatePicker extends WixComponent {
       month: value,
       year: value,
       firstDayOfWeek: 1,
-      locale,
-      showOutsideDays: true,
+      locale: typeof locale === 'string' ? locale : '',
+      fixedWeeks: true,
       modifiers: value ? {'keyboard-selected': value} : {},
       onKeyDown: this._handleKeyDown,
       onDayClick: this._saveNewValue,
@@ -336,12 +344,13 @@ export default class DatePicker extends WixComponent {
       error,
       errorMessage,
       customInput,
-      width
+      width,
+      inputProps
     } = this.props;
 
     const {isOpen} = this.state;
 
-    const inputProps = {
+    const _inputProps = {
       dataHook: inputDataHook,
       value: (initialValue && formatDate(initialValue, dateFormat, locale)) || '',
       onInputClicked: this.openCalendar,
@@ -353,13 +362,14 @@ export default class DatePicker extends WixComponent {
       onKeyDown: this._handleKeyDown,
       error,
       errorMessage,
-      ...(customInput ? customInput.props : {})
+      ...(customInput ? customInput.props : {}),
+      ...inputProps
     };
 
     return (
       <div style={{width}} className={styles.root}>
         <div ref={ref => this.inputRef = ref}>
-          {React.cloneElement(customInput || <Input/>, inputProps)}
+          {React.cloneElement(customInput || <Input/>, _inputProps)}
         </div>
 
         <div

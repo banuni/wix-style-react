@@ -11,9 +11,14 @@ import '../stories/Composite'; // TODO: Move to introduction
 import '../stories/Text'; // 1.2 Text
 // import '../stories/Label/index.story.js'; // 1.2 + Text
 import '../stories/Label'; // 1.2 + Label
-import '../stories/Heading'; // 1.3 Heading
-import '../stories/Icons'; // 1.4 Icons
+import '../stories/Heading.story'; // 1.3 Heading
+import '../stories/Icons'; // 1.4 Icons - deprecated
+import '../stories/NewIcons'; // 1.4 Icons
+
 import '../stories/Loader.story.js'; // 1.5 Loader
+import '../stories/LinearProgressBar.story.js'; // 1.6 LinearProgressBar
+import '../stories/CircularProgressBar.story.js'; // 1.7 LinearProgressBar
+import '../stories/ScrollBar'; // 1.8 ScrollBar
 
 // 2. Layout
 import '../stories/Page/index.story.js'; // 2.5 Page
@@ -36,13 +41,14 @@ import '../stories/DatePicker.story.js'; // 3.6 DatePicker
 import '../stories/Range'; // 3.7 Range
 import '../stories/MultiSelect'; // 3.8 Tags
 import '../stories/MultiSelectComposite'; // 3.8 + MultiSelectComposite
-import '../stories/Search.story.js'; // 3.9 Search
+import '../stories/Search/index.story'; // 3.9 Search
 import '../stories/ImageViewer'; // 3.10 ImageViewer
 import '../stories/FilePicker'; // 3.10 + FilePicker
 import '../stories/GoogleAddressInput'; // 3.11 GoogleAddressInput
+import '../stories/AddItem/addItem.story.js'; // 3.12 AddItem
 
 // 4. Selection
-import '../stories/Dropdown'; // 4.1 Dropdown
+import '../stories/Dropdown/Dropdown.story.js'; // 4.1 Dropdown
 import '../stories/AutoComplete'; // 4.1 + AutoComplete
 import '../stories/AutoCompleteComposite'; // 4.1 + AutoCompleteComposite
 import '../stories/InputWithOptions'; // 4.1 + InputWithOptions
@@ -105,8 +111,14 @@ import '../stories/ColorPicker.story.js'; // 11.5 Color Picker
 // 12. Other
 import '../stories/Badge'; // 12.1 Badge
 import '../stories/CounterBadge'; //12.3 CounterBadge
-import '../stories/Highlighter.story.js'; // 12.4 Highlighter
+import '../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../stories/Tag.story.js'; // 12.5 Tag
+import '../stories/Highlighter.story.js'; // Highlighter
+import '../stories/FormField.story.js'; // FormField
+
+// 13. Work in progress
+import '../stories/Table'; // 13.1 Table Card
+import '../stories/Table/Toolbar/ToolbarStory.js'; // 13.2 TableToolbar
 
 // TPA
 import '../stories/TPA/Button';
@@ -118,3 +130,6 @@ import '../stories/TPA/Label';
 // DEPRECATED
 import '../stories/LanguagePicker/index.story.js';
 import '../stories/SideBar';
+
+// Tests
+import '../stories/Page/PageTestStories.js'; // Tests/2.5 + Page/

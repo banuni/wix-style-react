@@ -20,8 +20,16 @@ const defaultBlock = {
   key: 'defaultBlock'
 };
 
+/*
+  here we are checking is link absolute(if it contain 'https' or http or '//')
+  and if it not absolute, then we add '//' at the beginning of it,
+  to make link absolute
+*/
+export const makeHrefAbsolute = href => /^(https?:)?\/\//.test(href) ? href : `//${href}`;
+
 class RichTextArea extends WixComponent {
   static propTypes = {
+    absoluteLinks: PropTypes.bool,
     buttons: PropTypes.arrayOf(PropTypes.string), // TODO: use PropTypes.oneOf(),
     dataHook: PropTypes.string,
     disabled: PropTypes.bool,
@@ -36,6 +44,7 @@ class RichTextArea extends WixComponent {
   }
 
   static defaultProps = {
+    absoluteLinks: false,
     errorMessage: '',
     value: '<p></p>'
   }
@@ -113,7 +122,9 @@ class RichTextArea extends WixComponent {
   }
 
   componentWillReceiveProps(props) {
-    if (props.value && props.value !== this.props.value && props.value !== this.lastValue) {
+    const isPlaceholderChanged = props.placeholder !== this.props.placeholder;
+    const isValueChanged = props.value && props.value !== this.props.value && props.value !== this.lastValue;
+    if (isPlaceholderChanged || isValueChanged) {
       if (props.isAppend) {
         const newEditorState = this.state.editorState
               .transform()
@@ -157,6 +168,7 @@ class RichTextArea extends WixComponent {
   hasLink = () => this.state.editorState.inlines.some(inline => inline.type === 'link');
 
   handleButtonClick = (action, type) => {
+    this.setState({activeToolbarButton: type})
     switch (action) {
       case 'mark':
         return this.handleMarkButtonClick(type);
@@ -267,19 +279,15 @@ class RichTextArea extends WixComponent {
   handleLinkButtonClick = ({href, text} = {}) => {
     const {editorState} = this.state;
     const transform = editorState.transform();
+    const decoratedHref = this.props.absoluteLinks
+      ? makeHrefAbsolute(href)
+      : href;
+
     if (this.hasLink()) {
       transform
         .unwrapInline('link');
-    } else if (editorState.isExpanded) {
-      transform
-        .wrapInline({
-          type: 'link',
-          data: {href}
-        })
-        .focus()
-        .collapseToEnd()
     } else {
-      const linkContent = text || href;
+      const linkContent = text || decoratedHref;
       const startPos = editorState.anchorOffset;
       transform
         .insertText(linkContent)
@@ -291,7 +299,7 @@ class RichTextArea extends WixComponent {
         })
         .wrapInline({
           type: 'link',
-          data: {href}
+          data: {href: decoratedHref}
         })
         .focus()
         .collapseToEnd();
@@ -313,6 +321,11 @@ class RichTextArea extends WixComponent {
       <div className={className} data-hook={dataHook}>
         <div className={classNames(styles.toolbar, {[styles.disabled]: disabled})} data-hook='toolbar'>
           <RichTextEditorToolbar
+            /*
+              activeToolbarButton prop required to trigger RichTextEditorToolbar re-render after toolbar button click
+            */
+            activeToolbarButton={this.state.activeToolbarButton}
+            selection={editorState.fragment.text}
             disabled={disabled}
             onClick={this.handleButtonClick}
             onLinkButtonClick={this.handleLinkButtonClick}

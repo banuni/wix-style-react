@@ -76,12 +76,13 @@ describe('TimeInput', () => {
     });
   });
 
-  describe('Input change', () => {
+  describe('onChange & disabled', () => {
     it(`should trigger 'onChange' callBack upon clicking input's up/down ticker`, () => {
       const props = {
         onChange: sinon.spy()
       };
       const driver = createDriver(<TimePicker {...props}/>);
+      expect(driver.isDisabled()).toBeFalsy();
       driver.clickTickerUp();
       driver.clickTickerDown();
       expect(props.onChange.calledTwice).toBeTruthy();
@@ -96,6 +97,8 @@ describe('TimeInput', () => {
 
       driver.clickTickerUp();
       driver.clickTickerDown();
+
+      expect(driver.isDisabled()).toBeTruthy();
       expect(props.onChange.called).toBeFalsy();
     });
 
@@ -156,6 +159,16 @@ describe('TimeInput', () => {
       expect(driver.getAmPmIndicatorText()).toBe('pm');
       driver.toggleAmPmIndicator();
       expect(driver.getAmPmIndicatorText()).toBe('am');
+    });
+
+    it(`should not allow to enter letters`, () => {
+      const props = {
+        defaultValue: defaultMoment
+      };
+      const driver = createDriver(<TimePicker {...props}/>);
+      driver.setValue('11:01');
+      driver.setValue('10a:02');
+      expect(driver.getValue()).toBe('11:01');
     });
   });
 

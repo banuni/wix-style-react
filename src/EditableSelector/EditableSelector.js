@@ -6,8 +6,8 @@ import Text from '../Deprecated/Text';
 import ButtonWithOptions from '../ButtonWithOptions/ButtonWithOptions';
 import EditableRow from './EditableRow/EditableRow';
 import styles from './EditableSelector.scss';
-import Plus2 from '../Icons/dist/components/Plus2';
-import Trash3 from '../Icons/dist/components/Trash3';
+import Add from '../new-icons/Add';
+import Delete from '../new-icons/Delete';
 
 class EditableSelector extends WixComponent {
   static propTypes = {
@@ -34,11 +34,11 @@ class EditableSelector extends WixComponent {
   };
 
   addNewRow = () => {
-    this.setState({addingNewRow: true});
+    this.setState({addingNewRow: true, editingRow: false});
   };
 
   editItem = index => {
-    this.setState({editingRow: index});
+    this.setState({editingRow: index, addingNewRow: false});
   };
 
   deleteItem = index => {
@@ -94,32 +94,41 @@ class EditableSelector extends WixComponent {
         {title && <div className={styles.title} data-hook="editable-selector-title"><Text appearance="T2">{title}</Text></div>}
         <div>
           {options.map((option, index) =>
-          this.state.editingRow === index ? this.renderInput(option.title, index) :
-          <div data-hook="editable-selector-row" className={styles.row} key={index}>
-            <Selector
-              dataHook="editable-selector-item"
-              id={index}
-              title={option.title}
-              isSelected={option.isSelected}
-              toggleType={toggleType}
-              onToggle={id => this.onOptionToggle(id)}
-              />
-            <div className={styles.optionMenu}>
-              <ButtonWithOptions.Button onClick={() => this.deleteItem(index)} dataHook="delete-item" type="button" height="small" theme="icon-greybackground">
-                <Trash3 size="15px"/>
-              </ButtonWithOptions.Button>
-              <ButtonWithOptions.Button onClick={() => this.editItem(index)} dataHook="edit-item" height="small" theme="fullblue">
-                {editButtonText}
-              </ButtonWithOptions.Button>
+            this.state.editingRow === index ? this.renderInput(option.title, index) :
+            <div data-hook="editable-selector-row" className={styles.row} key={index}>
+              <Selector
+                dataHook="editable-selector-item"
+                id={index}
+                title={option.title}
+                isSelected={option.isSelected}
+                toggleType={toggleType}
+                onToggle={id => this.onOptionToggle(id)}
+                />
+              <div className={styles.optionMenu}>
+                <ButtonWithOptions.Button onClick={() => this.deleteItem(index)} dataHook="delete-item" type="button" height="small" theme="icon-greybackground">
+                  <Delete/>
+                </ButtonWithOptions.Button>
+                <div className={styles.editRow}>
+                  <ButtonWithOptions.Button
+                    onClick={() => this.editItem(index)}
+                    dataHook="edit-item"
+                    height="small"
+                    theme="fullblue"
+                    >
+                    {editButtonText}
+                  </ButtonWithOptions.Button>
+                </div>
+              </div>
             </div>
-          </div>
           )}
         </div>
         {this.state.addingNewRow && this.renderInput()}
         <div className={styles.newRowButton} onClick={() => this.addNewRow()} data-hook="new-row-button">
           <Text appearance="T1.3">
-            <Plus2 size="13px"/>
-            <span data-hook="new-row-button-text" className={styles.text}>{newRowLabel}</span>
+            <span className={styles.newRowText}>
+              <Add/>
+              <span data-hook="new-row-button-text" className={styles.text}>{newRowLabel}</span>
+            </span>
           </Text>
         </div>
       </div>

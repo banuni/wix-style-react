@@ -12,6 +12,8 @@ import Input from '../Input';
 import DatePicker from './DatePicker';
 import '../utils/RangePolyfill.js';
 
+import isLocale from 'date-fns/locale/is';
+
 const noop = () => {};
 
 describe('DatePicker', () => {
@@ -594,6 +596,34 @@ describe('DatePicker', () => {
       const {calendarDriver} = setup();
       expect(calendarDriver.getNthWeekDayName(0)).toEqual('lu');
     });
+
+    describe('when function from date-fns', () => {
+      it('should display translated month in caption', () => {
+        const {calendarDriver} = setup({locale: isLocale});
+        expect(calendarDriver.getMonthCaption()).toEqual('október');
+      });
+
+      it('should display translated month in dropdown label', () => {
+        const {calendarDriver} = setup({
+          locale: isLocale,
+          showMonthDropdown: true
+        });
+        expect(calendarDriver.getMonthDropdownLabel()).toEqual('október');
+      });
+
+      it('should display translated months in dropdown options', () => {
+        const {calendarDriver} = setup({
+          locale: isLocale,
+          showMonthDropdown: true
+        });
+        expect(calendarDriver.getMonthDropdownDriver().optionContentAt(0)).toEqual('janúar');
+      });
+
+      it('should display translated weekdays', () => {
+        const {calendarDriver} = setup({locale: isLocale});
+        expect(calendarDriver.getNthWeekDayName(0)).toEqual('má');
+      });
+    });
   });
 
   describe('`value` prop', () => {
@@ -615,6 +645,23 @@ describe('DatePicker', () => {
       });
     });
   });
+
+  describe('borderRadius', () => {
+    it('should have both borderRadius by default', () => {
+      const {inputDriver} = createDriver(<DatePicker onChange={noop}/>);
+      expect(inputDriver.hasRightBorderRadius()).toBeTruthy();
+      expect(inputDriver.hasLeftBorderRadius()).toBeTruthy();
+    });
+  });
+
+  describe('inputProps prop', () => {
+    it('should pass inputProps to input component', () => {
+      const {inputDriver} = createDriver(<DatePicker inputProps={{noRightBorderRadius: true, noLeftBorderRadius: true}} onChange={noop}/>);
+      expect(inputDriver.hasRightBorderRadius()).toBeFalsy();
+      expect(inputDriver.hasLeftBorderRadius()).toBeFalsy();
+    });
+  });
+
 
   describe('testkit', () => {
     it('should exist', () => {

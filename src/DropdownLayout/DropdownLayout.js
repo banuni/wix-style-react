@@ -13,6 +13,7 @@ const modulu = (n, m) => {
 };
 
 const NOT_HOVERED_INDEX = -1;
+export const DIVIDER_OPTION_VALUE = '-';
 
 class DropdownLayout extends WixComponent {
 
@@ -129,6 +130,8 @@ class DropdownLayout extends WixComponent {
         break;
       }
 
+      case ' ':
+      case 'Spacebar':
       case 'Enter': {
         if (!this._onSelect(this.state.hovered)) {
           return false;
@@ -189,7 +192,7 @@ class DropdownLayout extends WixComponent {
 
     return (
       <div tabIndex={tabIndex} className={classNames(styles.wrapper, styles[`theme-${this.props.theme}`])} onKeyDown={this._onKeyDown} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <div className={contentContainerClassName} style={{maxHeight: this.props.maxHeightPixels + 'px'}}>
+        <div className={contentContainerClassName} style={{maxHeight: this.props.maxHeightPixels + 'px', minWidth: this.props.minWidthPixels ? `${this.props.minWidthPixels}px` : undefined}}>
           {this.renderNode(fixedHeader)}
           <div className={styles.options} style={{maxHeight: this.props.maxHeightPixels - 35 + 'px'}} ref={options => this.options = options} data-hook="dropdown-layout-options">
             {options.map((option, idx) => (
@@ -205,7 +208,7 @@ class DropdownLayout extends WixComponent {
 
   renderOption({option, idx}) {
     const {value, id, disabled, title, overrideStyle, linkTo} = option;
-    if (value === '-') {
+    if (value === DIVIDER_OPTION_VALUE) {
       return this.renderDivider(idx, `dropdown-item-${id}`);
     }
 
@@ -302,8 +305,10 @@ DropdownLayout.propTypes = {
   dropDirectionUp: PropTypes.bool,
   focusOnSelectedOption: PropTypes.bool,
   onClose: PropTypes.func,
+  /** Callback function called whenever the user selects a different option in the list */
   onSelect: PropTypes.func,
   visible: PropTypes.bool,
+  /** Array of objects. Objects must have an Id and can can include value and node. If value is '-', a divider will be rendered instead. */
   options: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([
       PropTypes.string,
@@ -316,6 +321,7 @@ DropdownLayout.propTypes = {
     disabled: PropTypes.bool,
     overrideStyle: PropTypes.bool
   })),
+  /** The id of the selected option in the list  */
   selectedId: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
@@ -323,9 +329,12 @@ DropdownLayout.propTypes = {
   tabIndex: PropTypes.number,
   theme: PropTypes.string,
   onClickOutside: PropTypes.func,
+  /** A fixed header to the list */
   fixedHeader: PropTypes.node,
+  /** A fixed footer to the list */
   fixedFooter: PropTypes.node,
   maxHeightPixels: PropTypes.number,
+  minWidthPixels: PropTypes.number,
   withArrow: PropTypes.bool,
   closeOnSelect: PropTypes.bool,
   onMouseEnter: PropTypes.func,

@@ -102,6 +102,23 @@ class MultiSelect extends InputWithOptions {
   }
 
   _onManuallyInput(inputValue) {
+    const {value, options} = this.props;
+
+    if (value && value.trim()) {
+      if (options.length) {
+        const unselectedOptions = this.getUnselectedOptions();
+        const visibleOptions = unselectedOptions.filter(this.props.predicate);
+        const maybeNearestOption = visibleOptions[0];
+
+        if (maybeNearestOption) {
+          this.onSelect([maybeNearestOption]);
+        }
+
+      } else {
+        this.props.onSelect([{id: value.trim(), label: value.trim()}]);
+      }
+    }
+
     if (inputValue) {
       inputValue = inputValue.trim();
       if (this.closeOnSelect()) {
@@ -109,14 +126,16 @@ class MultiSelect extends InputWithOptions {
       }
 
       this.onManuallyInput(inputValue);
-    } else {
-      super.hideOptions();
     }
     this.clearInput();
   }
 
+  getManualSubmitKeys() {
+    return ['Enter', 'Tab'].concat(this.props.delimiters);
+  }
+
   onKeyDown(event) {
-    const {tags, value, onRemoveTag, delimiters, options} = this.props;
+    const {tags, value, onRemoveTag} = this.props;
 
     if (
       tags.length > 0 &&
@@ -129,26 +148,6 @@ class MultiSelect extends InputWithOptions {
     if (event.key === 'Escape') {
       this.clearInput();
       super.hideOptions();
-    }
-
-    if (
-      (event.key === 'Enter' || event.key === 'Tab' || delimiters.includes(event.key)) &&
-      value.trim()
-    ) {
-      if (options.length) {
-        this._onManuallyInput(this.state.inputValue);
-        const unselectedOptions = this.getUnselectedOptions();
-        const visibleOptions = unselectedOptions.filter(this.props.predicate);
-        const maybeNearestOption = visibleOptions[0];
-
-        if (maybeNearestOption) {
-          this.onSelect([maybeNearestOption]);
-        }
-      } else {
-        this.props.onSelect([{id: value.trim(), label: value.trim()}]);
-      }
-
-      this.clearInput();
     }
 
     if (this.props.onKeyDown) {
@@ -209,6 +208,7 @@ MultiSelect.propTypes = {
 
 MultiSelect.defaultProps = {
   ...InputWithOptions.defaultProps,
+  highlight: true,
   theme: 'tags',
   predicate: () => true,
   tags: [],

@@ -29,6 +29,10 @@ $rows-margin: 6px;
   line-height: 34px;
 }
 
+.newRowText {
+  display: inline-flex;
+}
+
 .newRowButton {
   cursor: pointer;
   display: inline-block;
@@ -57,7 +61,15 @@ $rows-margin: 6px;
 
 .editableRowInput {
   flex: 1;
+}
+
+.editableRowInputWrap {
+  flex: 1;
   margin-right: 18px;
+}
+
+.editRow {
+  margin-left: 12px;
 }
 
 .editableRowButtons {
