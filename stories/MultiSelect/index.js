@@ -15,6 +15,8 @@ import ExampleWithoutOptions from './ExampleWithoutOptions';
 import ExampleWithoutOptionsRaw from '!raw-loader!./ExampleWithoutOptions';
 import ExampleReadOnly from './ExampleReadOnly';
 import ExampleReadOnlyRaw from '!raw-loader!./ExampleReadOnly';
+import ExampleReadOnlyWithError from './ExampleReadOnlyWithError';
+import ExampleReadOnlyWithErrorRaw from '!raw-loader!./ExampleReadOnlyWithError';
 
 storiesOf('3. Inputs', module)
   .add('3.8 Tags', () => (
@@ -38,6 +40,12 @@ storiesOf('3. Inputs', module)
         <CodeExample title="Read Only with Arrow" code={ExampleReadOnlyRaw}>
           <div style={{maxWidth: 720}}>
             <ExampleReadOnly/>
+          </div>
+        </CodeExample>
+
+        <CodeExample title="Read Only with Error message" code={ExampleReadOnlyWithErrorRaw}>
+          <div style={{maxWidth: 720}}>
+            <ExampleReadOnlyWithError/>
           </div>
         </CodeExample>
 
