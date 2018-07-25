@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import WixComponent from '../BaseComponents/WixComponent';
 import Arc from './Arc';
 import css from './Loader.scss';
-import Text from '../Deprecated/Text';
+import Badge from '../Badge';
 import Tooltip from '../Tooltip';
 import FormFieldError from '../new-icons/system/FormFieldError';
 import FormFieldErrorSmall from '../new-icons/system/FormFieldErrorSmall';
@@ -130,7 +130,7 @@ export default class Loader extends WixComponent {
         {
           shouldShowText && text &&
           <div className={css.text}>
-            <Text appearance="T5" dataHook="loader-text">{this.props.text}</Text>
+            <Badge type="transparent" dataHook="loader-text">{this.props.text}</Badge>
           </div>
         }
       </div>
