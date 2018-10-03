@@ -213,7 +213,7 @@ class SideMenuDrill extends React.Component {
     this.isAnimating = false;
     if (this.queuedUpdate) {
       this.queuedUpdate = false;
-      this.forceUpdate()
+      this.forceUpdate();
     }
   }
 
